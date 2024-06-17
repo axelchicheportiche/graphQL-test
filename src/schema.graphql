@@ -14,12 +14,48 @@ type Color {
   """
   True if transparent
   """
-  isTransparent: Boolean!
+  isTrans: String #Boolean must be a boolean
+}
+
+
+
+type Part {
+  id: ID! # part_num
+  name: String
+  color: Color
+}
+
+type Inventory {
+  id: ID
+  version: Int
+}
+
+type Minifig {
+  """
+  The figure number of the minifig
+  """
+  figNum: String
+
+  """
+  The name of the minifig
+  """
+  name: String
+
+  """
+  The number of parts the minifig consists of
+  """
+  numParts: Int
+
+  """
+  The URL of the image of the minifig
+  """
+  quantity: String
+  imgURL: String
+  inventories: [Inventory]
+
 }
 
 type Query {
-  """
-  The list of available colors
-  """
-  colors: [Color]
+  getMinifigs: [Minifig]
+  getMinifig(figNum: ID!): Minifig
 }

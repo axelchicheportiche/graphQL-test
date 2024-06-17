@@ -1,7 +1,12 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Color } from "./entities/Color";
 import { config } from "./config";
+
+//Entities :
+import { Minifig } from "./entities/Minifigs";
+import { Inventory } from "./entities/Inventories";
+import { InventoryMinifigs } from "./entities/InventoryMinifigs";
+
 
 export const AppDataSource = new DataSource({
   type: "sqlite",
@@ -9,7 +14,9 @@ export const AppDataSource = new DataSource({
   synchronize: true,
   logging: false,
   entities: [
-    Color,
+    Minifig,
+    Inventory,
+    InventoryMinifigs
   ],
   migrations: [],
   subscribers: [],
